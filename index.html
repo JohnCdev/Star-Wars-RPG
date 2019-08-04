@@ -22,29 +22,29 @@
             <h1 class="title glow">Star Wars RPG!</h1>
         </div>
 
-        <div class="sub-text-container" id="top-text-con">
+        <div class="sub-text-container invisible" id="top-text-con">
             <h2 id="top-text">Your Character</h2>
         </div>
 
         <div class="img-selection-container">
-            <div class="img-selection" id="luke-selection">
+            <div class="img-selection" value="luke" id="luke-selection">
                 <p>Luke Skywalker</p>
-                <img src="assets/images/luke.jpeg" alt="" class="character-img" id="luke">
+                <img src="assets/images/luke.jpeg" alt="" class="character-img">
                 <p id="luke-health">100</p>
             </div>
-            <div class="img-selection" id="obi-selection">
+            <div class="img-selection" value="obi" id="obi-selection">
                 <p>Obi-Wan Kenobi</p>
-                <img src="assets/images/obi.jpg" alt="" class="character-img" id="obi">
+                <img src="assets/images/obi.jpg" alt="" class="character-img">
                 <p id="obi-health">120</p>
             </div>
-            <div class="img-selection" id="sidious-selection">
+            <div class="img-selection" value="sidious" id="sidious-selection">
                 <p>Darth Sidious</p>
-                <img src="assets/images/sidious.jpeg" alt="" class="character-img" id="sidious">
+                <img src="assets/images/sidious.jpeg" alt="" class="character-img">
                 <p id="sidious-health">150</p>
             </div>
-            <div class="img-selection" id="maul-selection">
+            <div class="img-selection" value="maul" id="maul-selection">
                 <p>Darth Maul</p>
-                <img src="assets/images/maul.png" alt="" class="character-img" id="maul">
+                <img src="assets/images/maul.png" alt="" class="character-img">
                 <p id="maul-health">180</p>
             </div>
         </div>
@@ -54,21 +54,26 @@
         </div>
 
         <div class="img-enemies-container">
-            <!-- <div class="img-enemies">
+            <div class="img-enemies invisible" value="luke">
+                <p>Luke</p>
+                <img src="assets/images/luke.jpeg" alt="" class="enemies-img">
+                <p>100</p>
+            </div>
+            <div class="img-enemies invisible" value="obi">
                 <p>Obi-Wan Kenobi</p>
                 <img src="assets/images/obi.jpg" alt="" class="enemies-img">
                 <p>120</p>
             </div>
-            <div class="img-enemies">
+            <div class="img-enemies invisible" value="sidious">
                 <p>Darth Sidious</p>
                 <img src="assets/images/sidious.jpeg" alt="" class="enemies-img">
                 <p>150</p>
             </div>
-            <div class="img-enemies">
+            <div class="img-enemies invisible" value="maul">
                 <p>Darth Maul</p>
                 <img src="assets/images/maul.png" alt="" class="enemies-img">
                 <p>180</p>
-            </div> -->
+            </div>
         </div>
 
         <div class="sub-text-container">
@@ -81,11 +86,26 @@
 
 
         <div class="img-defender-container">
-            <!-- <div class="img-defender">
+            <div class="img-defender invisible" value="luke">
+                <p>Luke Skywalker</p>
+                <img src="assets/images/luke.jpeg" alt="" class="defender-img" id="defender">
+                <p id="defender-health">120</p>
+            </div>
+            <div class="img-defender invisible" value="obi">
                 <p>Obi-Wan Kenobi</p>
                 <img src="assets/images/obi.jpg" alt="" class="defender-img" id="defender">
                 <p id="defender-health">120</p>
-            </div> -->
+            </div>
+            <div class="img-defender invisible" value="sidious">
+                <p>Darth Sidious</p>
+                <img src="assets/images/sidious.jpeg" alt="" class="defender-img" id="defender">
+                <p id="defender-health">150</p>
+            </div>
+            <div class="img-defender invisible" value="maul">
+                <p>Darth Maul</p>
+                <img src="assets/images/maul.png" alt="" class="defender-img" id="defender">
+                <p id="defender-health">180</p>
+            </div>
         </div>
 
         <div class="sub-text-container">

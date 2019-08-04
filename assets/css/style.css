@@ -130,6 +130,10 @@ p {
     cursor: pointer;
 }
 
+.invisible {
+    display: none;
+}
+
 .shake {
     animation: shake .5s ease-in-out;
 }

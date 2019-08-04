@@ -25,28 +25,16 @@ var GameObject = {
         lukeHealth.text(this.lukeHPNum);
         this.characterSelected = false;
         this.openentChosen = false;
-        $("#bottom-text-con").append(bottomText);
-        topText.detach();
-        $(".img-selection-container").children().detach();
-        $(".img-selection-container").append(lukeSelect);
-        lukeSelect.removeClass().addClass("img-selection");
-        lukeImg.removeClass().addClass("character-img");
-        $(".img-selection-container").append(obiSelect);
-        obiSelect.removeClass().addClass("img-selection");
-        obiImg.removeClass().addClass("character-img");
-        $(".img-selection-container").append(sidiousSelect);
-        sidiousSelect.removeClass().addClass("img-selection");
-        sidiousImg.removeClass().addClass("character-img");
-        $(".img-selection-container").append(maulSelect);
-        maulSelect.removeClass().addClass("img-selection");
-        maulImg.removeClass().addClass("character-img");
+        $("#top-text-con").addClass("invisible");
+        $("#bottom-text-con").text("Your Character");
+        $(".img-selection").removeClass("invisible");
+        $(".img-enemies").addClass("invisible");
+        $(".img-defender").addClass("invisible");
     },
 }
 
 
 window.onload = function () {
-
-    topText.detach();
 
     //select your chracter
     $(".img-selection").click(function () {
@@ -54,34 +42,40 @@ window.onload = function () {
             return false;
         }
         GameObject.characterSelected = true;
-        $("#top-text-con").append(topText);
-        bottomText.text("Enemies Available to Attack");
+        $("#top-text-con").removeClass("invisible");
+        $("#bottom-text-con").text("Enemies Available to Attack");
         var sibs = $(this).siblings();
-        $(sibs).detach();
-        sibs.removeClass().addClass("img-enemies");
-        sibs.find("img").removeClass().addClass("enemies-img");
-        $(".img-enemies-container").append(sibs);
-        enemyDelegate();
+        $(sibs).addClass("invisible");
+        var thisTemp = $(this).attr("value");
+        $(".img-enemies").each(function () {
+            if (thisTemp != $(this).attr("value")) {
+                $(this).removeClass("invisible");
+            }
+        });
     });
 
     //move enemy to defender postion
-    function enemyDelegate() {
-        $(".img-enemies").click(function () {
-            console.log($(this));
-            $(".img-defender-container").append($(this));   
-            $(this).removeClass().addClass("img-defender");
-            $(this).find("img").removeClass().addClass("defender-img");
+    $(".img-enemies").click(function () {
+        if (GameObject.openentChosen || !GameObject.characterSelected) {
+            return false;
+        }
+        GameObject.openentChosen = true;
+        $(this).addClass("invisible");
+        var thisTemp = $(this).attr("value");
+        $(".img-defender").each(function () {
+            if (thisTemp === $(this).attr("value")) {
+                $(this).removeClass("invisible");
+            }
         });
-    }
+    });
 
     //buttons
     $("#attack-button").click(function () {
-        console.log("attacked");
-        $("#defender").addClass("shake");
-        $("#defender").css("box-shadow", "0 0 30px red");
+        $(".defender-img").addClass("shake");
+        $(".defender-img").css("box-shadow", "0 0 30px red");
         setTimeout(function () {
-            $("#defender").removeClass("shake");
-            $("#defender").css("box-shadow", "");
+            $(".defender-img").removeClass("shake");
+            $(".defender-img").css("box-shadow", "");
         }, 500);
     });
 
