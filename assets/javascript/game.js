@@ -21,12 +21,13 @@ var GameObject = {
     },
     playerAttack: 0,
     playerHealth: 0,
-    initialAttack: 0,
+    initialAttack: 0,   
     defenderName: "",
     defenderHealth: 0,
     defenderAttack: 0,
     characterSelected: false,
-    openentChosen: false,
+    opponentChosen: false,
+    opponentDfeated: false,
     restart: function () {
         this.lukeHPNum = 100;
         $("#luke-health").text(this.lukeHPNum);
@@ -43,7 +44,8 @@ var GameObject = {
         this.defenderAttack = "";
         this.defenderHealth = "";
         this.characterSelected = false;
-        this.openentChosen = false;
+        this.opponentChosen = false;
+        this.opponentDfeated = false,
         $(".fight-text-container").addClass("invisible");
         $(".attack-button-container").addClass("invisible");
         $(".battle-text-container").addClass("invisible");
@@ -54,6 +56,11 @@ var GameObject = {
         $(".img-enemies").addClass("invisible");
         $(".img-defender").addClass("invisible");
     },
+    // nextDefender: function() {
+    //     this.defenderHealth = 
+    //     this.defenderAttack = 
+    //     this.defenderName = $()
+    // }
 }
 
 
@@ -98,11 +105,12 @@ window.onload = function () {
 
     //move enemy to defender postion
     $(".img-enemies").click(function () {
-        if (GameObject.openentChosen || !GameObject.characterSelected) {
+        if (GameObject.opponentChosen || !GameObject.characterSelected) {
             return false;
         }
-        GameObject.openentChosen = true;
+        GameObject.opponentChosen = true;
         $(this).addClass("invisible");
+        $(".img-defender").addClass("invisible");
         $(".fight-text-container").removeClass("invisible");
         $(".attack-button-container").removeClass("invisible");
         $(".reset-button-container").removeClass("invisible");
@@ -128,13 +136,14 @@ window.onload = function () {
             GameObject.defenderHealth = GameObject.maul.maulHPNum;
             GameObject.defenderAttack = GameObject.maul.maulCounter;
         }
-        console.log("Defender Name: " + GameObject.defenderName);
-        console.log("Defender Attack: " + GameObject.defenderAttack);
-        console.log("Defender Health: " + GameObject.defenderHealth);
     });
 
     //buttons
     $("#attack-button").click(function () {
+        console.log(!GameObject.opponentChosen);
+        if (!GameObject.opponentChosen) {
+            return false;
+        }
         $(".battle-text-container").removeClass("invisible");
 
         GameObject.defenderHealth -= GameObject.playerAttack;
@@ -155,6 +164,12 @@ window.onload = function () {
         $("#battle-stats-2").text(GameObject.defenderName + " attacked you back for " + GameObject.defenderAttack + " damage.");
 
         GameObject.playerAttack += GameObject.initialAttack;
+
+        //check for defender 
+        if (GameObject.defenderHealth <= 0) {
+            GameObject.opponentChosen = false;
+            console.log(GameObject.defenderHealth);
+        }
 
         //animation
         $(".defender-img").addClass("shake");
