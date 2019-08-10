@@ -84,6 +84,7 @@ p {
 
 .attack-button-container {
     padding: 10px;
+    clear: both;
 }
 
 #attack-button {
