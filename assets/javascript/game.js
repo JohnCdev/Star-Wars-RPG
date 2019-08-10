@@ -60,7 +60,6 @@ var GameObject = {
     },
     checkHealth: function () {
         if (this.playerHealth <= 0) {
-            this.characterSelected = false;
             $(".reset-button-container").removeClass("invisible");
             $("#battle-stats-1").text("You lose! Click Restart to try again!");
             $("#battle-stats-2").text("");
