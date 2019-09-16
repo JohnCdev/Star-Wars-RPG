@@ -1,4 +1,4 @@
-# unit-4-game - Star Wras themed RPG Game
+#Star Wras themed RPG Game
 
 Site: https://johncdev.github.io/unit-4-game/
 
